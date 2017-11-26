@@ -27,10 +27,12 @@ _ https://en.wikipedia.org/wiki/List_of_first-person_shooters
 _ https://en.wikipedia.org/wiki/List_of_freeware_first-person_shooters  
 _ https://upload.wikimedia.org/wikipedia/en/b/b8/FPSChart.svg  
 _  
+
 .   
-_ https://en.wikipedia.org/wiki/Free-to-play  
+_ https://en.wikipedia.org/wiki/Free-to-play   
 _ https://en.wikipedia.org/wiki/Pay_to_play  
-. 
+.   
+  
 _ https://en.wikipedia.org/wiki/Web_standards  
 _ https://en.wikipedia.org/wiki/HTML  
 _ https://en.wikipedia.org/wiki/Cascading_Style_Sheets  
