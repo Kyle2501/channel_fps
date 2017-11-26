@@ -1,7 +1,7 @@
 
 
 """
-Channel First Person Shooter
+Channel First Person Shooter Platform & Game
 
 """
 
