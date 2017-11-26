@@ -8,9 +8,6 @@ http://firstpersonshooter-1138.appspot.com
 
 
 -
-
-
-
 _ https://en.wikipedia.org/wiki/Browser_game  
 _ https://en.wikipedia.org/wiki/Mobile_game  
 _ https://en.wikipedia.org/wiki/Online_game  
@@ -18,7 +15,7 @@ _ https://en.wikipedia.org/wiki/History_of_online_games
 _ https://en.wikipedia.org/wiki/Massively_multiplayer_online_game  
 _ https://en.wikipedia.org/wiki/History_of_massively_multiplayer_online_games  
 _ https://en.wikipedia.org/wiki/List_of_video_game_genres  
--  
+  
 _ https://en.wikipedia.org/wiki/Shooter_game  
 _ https://simple.wikipedia.org/wiki/First-person_shooter  
 _ https://en.wikipedia.org/wiki/First-person_(video_games)  
