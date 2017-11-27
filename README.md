@@ -54,3 +54,24 @@ _ https://webapp2.readthedocs.io/en/latest/
 
 
 
+Python Server File Function Definions:  
+.  MainPage  
+.  OpenedPage  
+.  ClosedPage  
+.  StartGame
+.  ChangeGameInfo  
+.  ClearGame  
+.  Get_Avail_GameID  
+.  Get_S32P_Scoreboard  
+.  Get_S31P_Scoreboard  
+.  Get_CF1P_Scoreboard  
+.  Get_CF2P_Scoreboard  
+.  UpdateScore  
+.  UpdateWinner  
+.  UpdateMap  
+.  UpdateGame  
+.  GameFromRequest  
+.  
+
+
+
