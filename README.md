@@ -51,6 +51,25 @@ _ https://webapp2.readthedocs.io/en/latest/
 
 
 
+#### WSGI HTTP Server URL Routes:  
+.  /  
+.  opened  
+.  closed  
+.  start_game  
+.  update_map  
+.  update_game  
+.  update_winner  
+.  change_game_info  
+.  update_score  
+.  get_cf_2p_scoreboard  
+.  get_cf_1p_scoreboard  
+.  get_s3_1p_scoreboard  
+.  get_s3_2p_scoreboard  
+.  get_avail_gameid  
+.  clear_game  
+  
+
+
 #### HTML Template Server Values:
 .  login_key  
 .  gate   
