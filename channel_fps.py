@@ -642,7 +642,7 @@ class MainPage(webapp2.RequestHandler):
                          'game_link': game_link,
                          'initial_message': GameUpdater(game).get_game_message(),
                         }
-      path = os.path.join(os.path.dirname(__file__), 'index.html')
+      path = os.path.join(os.path.dirname(__file__), 'html/index.html')
       self.response.out.write(template.render(path, template_values))
     else:
       self.redirect('/')
