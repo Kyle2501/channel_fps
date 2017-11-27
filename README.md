@@ -51,8 +51,16 @@ _ https://webapp2.readthedocs.io/en/latest/
 
 
 
-
-
+#### HTML Template Server Values:
+.  login_key  
+.  gate   
+.  user_name  
+.  token   
+.  me / current_user   
+.  game_key   
+.  game_link   
+.  initial_message  
+  
 
 #### Python Server File Function Definions:  
 .  MainPage  
@@ -66,6 +74,8 @@ _ https://webapp2.readthedocs.io/en/latest/
 .  Get_S31P_Scoreboard  
 .  Get_CF1P_Scoreboard  
 .  Get_CF2P_Scoreboard  
+
+  
 .  UpdateScore  
 .  UpdateWinner  
 .  UpdateMap  
