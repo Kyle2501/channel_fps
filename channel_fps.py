@@ -14,6 +14,8 @@ import json
 import math
 import random 
 from copy import deepcopy
+from urlparse import urlparse
+
 
 import webapp2
 from google.appengine.api import channel
@@ -537,14 +539,15 @@ class OpenedPage(webapp2.RequestHandler):
     GameUpdater(game).send_update("both")
 
 class MainPage(webapp2.RequestHandler):
-  """The main UI page, renders the 'index.html' template."""
-
   def get(self):
-    """Renders the main page. When this page is shown, we create a new
-    channel to push asynchronous updates to the client."""
-
-
-    # - get user
+# - URL Parse
+    page_address = self.request.uri
+    uri = urlparse(page_address)
+    path = uri[2] # - uri.path
+    layers = path.split('/')
+    path_layer = layers[1]
+    base = os.path.basename(page_address)
+# - get user
     user = users.get_current_user()
     if user:
         login_key = users.create_logout_url(self.request.uri)
@@ -556,8 +559,16 @@ class MainPage(webapp2.RequestHandler):
       user_name = ''
 
     current_user = None
+    
+    html_file = 'index.html'
+    
+    if path_layer == 'menu':
+      html_file = 'menu_screen.html'
+    
+    if path_layer == 'play':
+      html_file = 'index.html'
 
-    # - get game key
+# - get game key
     game = None
     user_game = None
     game_key = self.request.get('g')
@@ -642,7 +653,7 @@ class MainPage(webapp2.RequestHandler):
                          'game_link': game_link,
                          'initial_message': GameUpdater(game).get_game_message(),
                         }
-      path = os.path.join(os.path.dirname(__file__), 'html/index.html')
+      path = os.path.join(os.path.dirname(__file__),  'html/%s' %html_file)
       self.response.out.write(template.render(path, template_values))
     else:
       self.redirect('/')
@@ -653,6 +664,10 @@ class MainPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/menu/?', MainPage),
+    ('/play/?', MainPage),
+    
+    
     ('/opened', OpenedPage), 
     ('/closed', ClosedPage), 
     # ('/_ah/channel/disconnected/', ClosedPage), 
