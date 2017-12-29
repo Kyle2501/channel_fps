@@ -668,8 +668,8 @@ app = webapp2.WSGIApplication([
     ('/get_s3_2p_scoreboard', Get_S32P_Scoreboard),
     ('/get_avail_gameid/?', Get_Avail_GameID),
     ('/clear_game/?', ClearGame),
-    ],
-    debug=True)
+ ],
+debug=True)
 
 
 
