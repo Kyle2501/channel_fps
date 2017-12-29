@@ -597,6 +597,30 @@ class MainPage(webapp2.RequestHandler):
     
     if path_layer == 'menu':
       html_file = 'menu_screen.html'
+      
+    if path_layer == 'splash':
+      html_file = 'splash_screen.html'
+    
+    if path_layer == 'intro':
+      html_file = 'intro_page.html'
+      
+    if path_layer == 'player':
+      html_file = 'player_options.html'
+    
+    if path_layer == 'settings':
+      html_file = 'game_settings.html'
+      
+    if path_layer == 'sounds':
+      html_file = 'sound_page.html'
+    
+    if path_layer == 'graphics':
+      html_file = 'graphics_page.html'
+      
+    if path_layer == 'about':
+      html_file = 'about.html'
+    
+    if path_layer == 'howto':
+      html_file = 'howto.html'
     
     if path_layer == 'channel_fps':
       html_file = 'index.html'
@@ -692,8 +716,8 @@ class MainPage(webapp2.RequestHandler):
       self.redirect('/')
 
 #-------------------------------------------------------------#
-#                                                             #
-#-------------------------------------------------------------#   
+#         page routes                             . url       #
+#-------------------------------------------------------------#
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -713,14 +737,14 @@ app = webapp2.WSGIApplication([
     ('/graphics/?', MainPage),
     
     
-    ('/opened', OpenedPage), 
-    ('/closed', ClosedPage), 
+    ('/opened', OpenedPage),
+    ('/closed', ClosedPage),
     # ('/_ah/channel/disconnected/', ClosedPage), 
-    ('/start_game', StartGame), 
+    ('/start_game', StartGame),
     ('/update_map', UpdateMap),
     ('/update_game', UpdateGame),
     ('/update_winner', UpdateWinner),
-    ('/change_game_info', ChangeGameInfo),   
+    ('/change_game_info', ChangeGameInfo),
     ('/update_score', UpdateScore),
     ('/get_cf_2p_scoreboard', Get_CF2P_Scoreboard),
     ('/get_cf_1p_scoreboard', Get_CF1P_Scoreboard),
