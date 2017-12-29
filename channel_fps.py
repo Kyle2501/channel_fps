@@ -666,6 +666,18 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/menu/?', MainPage),
     ('/play/?', MainPage),
+    ('/settings/?', MainPage),
+    ('/splash/?', MainPage),
+    ('/intro/?', MainPage),
+    ('/about/?', MainPage),
+    ('/howto/?', MainPage),
+    
+    ('/player/?', MainPage),
+    ('/world/?', MainPage),
+    ('/map/?', MainPage),
+    ('/pause/?', MainPage),
+    ('/sounds/?', MainPage),
+    ('/graphics/?', MainPage),
     
     
     ('/opened', OpenedPage), 
