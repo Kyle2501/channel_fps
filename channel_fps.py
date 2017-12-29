@@ -23,6 +23,39 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 from google.appengine.ext.webapp import template
 
+
+
+
+class Player_db(ndb.Model):
+  """All the data we store for a game"""
+  create_time = ndb.IntegerProperty()
+  user1 = ndb.StringProperty()
+  user2 = ndb.StringProperty()
+  game_data = ndb.JsonProperty()
+  winner = ndb.StringProperty()
+  user1_name = ndb.StringProperty()
+  user2_name = ndb.StringProperty()
+  user1_online = ndb.BooleanProperty()
+  user2_online = ndb.BooleanProperty()
+  player_num = ndb.IntegerProperty()
+  game_type = ndb.StringProperty()
+
+
+class User_db(ndb.Model):
+  """All the data we store for a game"""
+  create_time = ndb.IntegerProperty()
+  user1 = ndb.StringProperty()
+  user2 = ndb.StringProperty()
+  game_data = ndb.JsonProperty()
+  winner = ndb.StringProperty()
+  user1_name = ndb.StringProperty()
+  user2_name = ndb.StringProperty()
+  user1_online = ndb.BooleanProperty()
+  user2_online = ndb.BooleanProperty()
+  player_num = ndb.IntegerProperty()
+  game_type = ndb.StringProperty()
+
+
 class Scoreboard(ndb.Model):
   """save the game for login user"""
   score_info = ndb.JsonProperty()
@@ -560,12 +593,12 @@ class MainPage(webapp2.RequestHandler):
 
     current_user = None
     
-    html_file = 'index.html'
+    html_file = 'menu_screen.html'
     
     if path_layer == 'menu':
       html_file = 'menu_screen.html'
     
-    if path_layer == 'play':
+    if path_layer == 'channel_fps':
       html_file = 'index.html'
 
 # - get game key
@@ -665,7 +698,7 @@ class MainPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/menu/?', MainPage),
-    ('/play/?', MainPage),
+    ('/channel_fps/?', MainPage),
     ('/settings/?', MainPage),
     ('/splash/?', MainPage),
     ('/intro/?', MainPage),
