@@ -5,190 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>First Person Shooter Game</title>
     <style>
-        body{margin: 0; padding: 0; font-family:'Helvetica Neue',sans-serif;  cursor: crosshair;overflow: hidden;}
-        /*scoreboard*/
-        #scoreboard {position: fixed; top: 0; right: 0; /*width: 350px;*/ text-align: center; font-family: serif; font-size: 1rem; display: none; background: #aaa; border-radius: 5px; padding: 0 0.3rem;}
-        #scoreboard table {border-bottom: 1px solid #fff; }
-        #scoreboard p {margin: 8px auto;}
-        #scoretable th{color: #1E88E5; padding: 0 6px;}
-        .color_cl{width: 10px;}
-        #color1{background: yellow; }
-        #color2{background: orange; }
+body { margin: 0; padding: 0; font-family: 'Helvetica Neue', sans-serif; cursor: crosshair; overflow: hidden; }
+        /* - scoreboard - */
+#scoreboard {position: fixed; top: 0; right: 0; /*width: 350px;*/ text-align: center; font-family: serif; font-size: 1rem; display: none; background: #aaa; border-radius: 5px; padding: 0 0.3rem; }
+#scoreboard table { border-bottom: 1px solid #fff; }
+#scoreboard p { margin: 8px auto; }
+#scoretable th { color: #1E88E5; padding: 0 6px; }
+.color_cl { width: 10px; }
+#color1 { background: yellow; }
+#color2 { background: orange; }
 
-        /*general css for .info_page*/
-        .info_page{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: grey; opacity: 0.85; text-align: center; color: #fff; z-index: 100; display: none;}
-        .info_page h1{margin-top: 60px; font-family: cursive; font-weight: bolder; font-size: 3rem;}
-        .info_page h2{margin: 35px auto 15px auto; font-family: cursive; font-weight: bolder; font-size: 2rem;text-shadow:cyan 0 -1px 3px;}
-        .info_page h3{margin-top: 25px; font-family: cursive; font-weight: bolder; font-size: 1.5rem; color: #d04c4c;}
-        .info_page h4{margin: 15px;}
-        .cyan{color: cyan;}
+        /* - general css for .info_page - */
+.info_page { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: grey; opacity: 0.85; text-align: center; color: #fff; z-index: 100; display: none; }
+.info_page h1 { margin-top: 60px; font-family: cursive; font-weight: bolder; font-size: 3rem; }
+.info_page h2 { margin: 35px auto 15px auto; font-family: cursive; font-weight: bolder; font-size: 2rem;text-shadow:cyan 0 -1px 3px; }
+.info_page h3 { margin-top: 25px; font-family: cursive; font-weight: bolder; font-size: 1.5rem; color: #d04c4c;}
+.info_page h4 { margin: 15px; }
+.cyan { color: cyan; }
 
-        /* instruction page */
-        button{font-size: 1rem; padding: 5px 15px; color: #fff; border-radius: 16px;  border: none; margin: 0 auto; cursor: pointer; outline: none; background: #009688; font-family:'Helvetica Neue',sans-serif; text-shadow:#C17C3A 0 -1px 0;}
-        button:hover{transform: scale(1.15); -webkit-transform: scale(1.15);}
-        #game_info, #game_link{color:cyan; }
-        #mini_map{position: fixed; top:0; left: 0; width: 200px; height: 200px; background: #73c3aa; z-index: 90;}
-        #instruction, #game_start {display: block;}
-        #instruction p{margin: 5px auto;}
-        .waiting, .not_waiting{display: none;}
-        #choose_game_type button{ margin: 0 12px;}
-        /* other info pages */
-        #heal {background: green; opacity: 0.35;}
-        #hurt {background: red; opacity: 0.35; }
-        .how_to_play{margin: 15px auto; text-align: left; width: 25rem;}
-        #game_start, #resume{margin: 12px auto; background: orange; border: 1px solid #fff; }
-        .startover{border: 1px solid #fff;  background: #00BCD4; margin: 20px 20px;}
-        #result_text{color: #fff; margin: 3.5rem auto 25px auto; text-shadow:cyan 0 -1px 6px;}
-        .top_scores{margin: 15px auto; border-radius: 10px; background: steelblue; padding: 15px; font-family:'Helvetica Neue',sans-serif; text-shadow:#C17C3A 0 -1px 0; font-size: 1rem;}
-        .top_scores td{padding: 5px 10px;}
-        .top_scores th{border-bottom: 1px solid #fff;}
+        /* - instruction page - */
+button { font-size: 1rem; padding: 5px 15px; color: #fff; border-radius: 16px;  border: none; margin: 0 auto; cursor: pointer; outline: none; background: #009688; font-family: 'Helvetica Neue',sans-serif; text-shadow:#C17C3A 0 -1px 0; }
+button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
+#game_info, #game_link { color:cyan; }
+#mini_map{position: fixed; top:0; left: 0; width: 200px; height: 200px; background: #73c3aa; z-index: 90; }
+#instruction, #game_start { display: block; }
+#instruction p { margin: 5px auto; }
+.waiting, .not_waiting { display: none; }
+#choose_game_type button { margin: 0 12px; }
 
-        .mouse_displaySVG { position: absolute; right: 0; bottom: 0; z-index: 80; }
+        /* - other info pages - */
+#heal { background: green; opacity: 0.35; }
+#hurt { background: red; opacity: 0.35; }
+.how_to_play { margin: 15px auto; text-align: left; width: 25rem; }
+#game_start, #resume { margin: 12px auto; background: orange; border: 1px solid #fff; }
+.startover{border: 1px solid #fff;  background: #00BCD4; margin: 20px 20px; }
+#result_text { color: #fff; margin: 3.5rem auto 25px auto; text-shadow: cyan 0 -1px 6px; }
+.top_scores { margin: 15px auto; border-radius: 10px; background: steelblue; padding: 15px; font-family: 'Helvetica Neue', sans-serif; text-shadow: #C17C3A 0 -1px 0; font-size: 1rem; }
+.top_scores td { padding: 5px 10px; }
+.top_scores th { border-bottom: 1px solid #fff; }
 
-        /* start button amination */
-        .animated {  
-           -webkit-animation-duration: 2s; 
-            animation-duration: 2s; 
-            -webkit-animation-fill-mode: both; 
-            animation-fill-mode: both; 
-            animation-iteration-count:infinite; 
-            -webkit-animation-iteration-count:infinite; 
-        } 
+.mouse_displaySVG { position: absolute; right: 0; bottom: 0; z-index: 80; }
 
-        @-webkit-keyframes pulse { 
-            0% { -webkit-transform: scale(1); } 
-            50% { -webkit-transform: scale(1.2); } 
-            100% { -webkit-transform: scale(1); } 
-        } 
-        @keyframes pulse { 
-            0% { transform: scale(1); } 
-            50% { transform: scale(1.1); } 
-            100% { transform: scale(1); } 
-        } 
-        .pulse { 
-            -webkit-animation-name: pulse; 
-            animation-name: pulse; 
-        }
+        /* - start button amination - */
+.animated {
+   -webkit-animation-duration: 2s; 
+    animation-duration: 2s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    animation-iteration-count:infinite; 
+    -webkit-animation-iteration-count:infinite; 
+} 
 
-        /*choose player number*/
-        #choose_player { display: none;}
-        .player_btn { margin: 0 8px; }
-        
-        /* choose game id */
-        #choose_game_id{position:  absolute; top: 200px; left: 50px; background: #009688; border-radius:  10px; display: none; text-shadow:#C17C3A 0 -1px 0; box-shadow: 2px 2px 8px #aaa; padding: 0 5px; border: 1px solid #fff;}
-        .change_game_id{display: block; border: none; background: none;}
-        #close_game_id{position: absolute; top:-8px; right: -8px; border-radius: 10px; border: 2px solid #fff; background: cyan; display: none;}
-        .animated2 { 
-          -webkit-animation-duration: 2s; 
-          animation-duration: 2s; 
-          -webkit-animation-fill-mode: both; 
-          animation-fill-mode: both; 
-        } 
+@-webkit-keyframes pulse { 
+    0% { -webkit-transform: scale(1); } 
+    50% { -webkit-transform: scale(1.2); } 
+    100% { -webkit-transform: scale(1); } 
+} 
+@keyframes pulse { 
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.1); } 
+    100% { transform: scale(1); } 
+} 
+.pulse { 
+    -webkit-animation-name: pulse; 
+    animation-name: pulse; 
+}
 
-        @-webkit-keyframes flipInX { 
-            0% { -webkit-transform: perspective(400px) rotateX(90deg); 
-                  opacity: 0; 
-            } 
-            40% { -webkit-transform: perspective(400px) rotateX(-10deg); } 
-            70% { -webkit-transform: perspective(400px) rotateX(10deg); } 
-            100% { -webkit-transform: perspective(400px) rotateX(0deg); 
-                   opacity: 1; 
-            } 
-        } 
-        @keyframes flipInX { 
-            0% {  transform: perspective(400px) rotateX(90deg); 
-                  opacity: 0; 
-            } 
-            40% { transform: perspective(400px) rotateX(-10deg); } 
-            70% { transform: perspective(400px) rotateX(10deg); } 
-            100% { transform: perspective(400px) rotateX(0deg); 
-                   opacity: 1; 
-            } 
-        } 
-        .flipInX { 
-            -webkit-backface-visibility: visible ; /*important*/
-            -webkit-animation-name: flipInX; 
-            backface-visibility: visible; /*important*/
-            animation-name: flipInX; 
-        }
+        /* - choose player number - */
+#choose_player { display: none; }
+.player_btn { margin: 0 8px; }
+
+        /* - choose game id - */
+#choose_game_id { position:  absolute; top: 200px; left: 50px; background: #009688; border-radius:  10px; display: none; text-shadow:#C17C3A 0 -1px 0; box-shadow: 2px 2px 8px #aaa; padding: 0 5px; border: 1px solid #fff;}
+.change_game_id{display: block; border: none; background: none;}
+#close_game_id{position: absolute; top:-8px; right: -8px; border-radius: 10px; border: 2px solid #fff; background: cyan; display: none;}
+.animated2 { 
+  -webkit-animation-duration: 2s; 
+  animation-duration: 2s; 
+  -webkit-animation-fill-mode: both; 
+  animation-fill-mode: both; 
+} 
+
+@-webkit-keyframes flipInX { 
+    0% { -webkit-transform: perspective(400px) rotateX(90deg); 
+          opacity: 0; 
+    } 
+    40% { -webkit-transform: perspective(400px) rotateX(-10deg); } 
+    70% { -webkit-transform: perspective(400px) rotateX(10deg); } 
+    100% { -webkit-transform: perspective(400px) rotateX(0deg); 
+           opacity: 1; 
+    } 
+} 
+@keyframes flipInX { 
+    0% {  transform: perspective(400px) rotateX(90deg); 
+          opacity: 0; 
+    } 
+    40% { transform: perspective(400px) rotateX(-10deg); } 
+    70% { transform: perspective(400px) rotateX(10deg); } 
+    100% { transform: perspective(400px) rotateX(0deg); 
+           opacity: 1; 
+    } 
+} 
+.flipInX { 
+    -webkit-backface-visibility: visible ; /*important*/
+    -webkit-animation-name: flipInX; 
+    backface-visibility: visible; /*important*/
+    animation-name: flipInX; 
+}
 
 
-        /* control pannel*/
-        .control{ position: absolute; bottom: 0; left: 10px; z-index: 110; height: 35px;}
-        .control_btn {width: 35px; height: 35px; border: none; margin: auto; vertical-align: top;}
-        #question{background: url("/images/question.png"); background-size: cover;background-repeat: no-repeat; }
-        #home{background: url("/images/home.png"); background-size: cover;background-repeat: no-repeat;  }
-        #setting{background: url("/images/setting.png"); background-size: cover;background-repeat: no-repeat; }
-        #key_error{color:red; display: none;}
-        #close_keyset{border: 1px solid #fff; background: orange;}
-        .sound_control{height: 35px; margin: auto; display: inline-block; text-align: center; font: sans-serif; font-weight: bolder; font-size: 12px; }
+        /* - control pannel - */
+.control { position: absolute; bottom: 0; left: 10px; z-index: 110; height: 35px; }
+.control_btn { width: 35px; height: 35px; border: none; margin: auto; vertical-align: top; }
+#question { background: url("/images/question.png"); background-size: cover;background-repeat: no-repeat; }
+#home { background: url("/images/home.png"); background-size: cover;background-repeat: no-repeat;  }
+#setting { background: url("/images/setting.png"); background-size: cover;background-repeat: no-repeat; }
+#key_error { color:red; display: none;}
+#close_keyset { border: 1px solid #fff; background: orange; }
+.sound_control { height: 35px; margin: auto; display: inline-block; text-align: center; font: sans-serif; font-weight: bolder; font-size: 12px; }
 
-        /* choose map btn */
-        #choose_map {margin: 20px auto;}
-        .map_btn{width: 100px; height: 100px; display: inline-block; margin: 15px; border: 1px solid #fff; border-radius: 5px;}
-        #map1{background: url("/images/map1.png");  box-shadow: 2px 2px 8px yellow;}
-        #map2{background: url("/images/map2.png"); }
-        #map3{background: url("/images/map3.png"); }
-        #map1, #map2, #map3{ background-size: cover;}
+        /* - choose map btn - */
+#choose_map { margin: 20px auto; }
+.map_btn { width: 100px; height: 100px; display: inline-block; margin: 15px; border: 1px solid #fff; border-radius: 5px; }
+#map1 { background: url("/images/map1.png");  box-shadow: 2px 2px 8px yellow; }
+#map2 { background: url("/images/map2.png"); }
+#map3 { background: url("/images/map3.png"); }
+#map1, #map2, #map3 { background-size: cover; }
 
-        /* show direction pannel */
-        #direction{position: absolute; top:0; left: 200px; width: 55px; height: 45px;  z-index: 90;}
-        #topleft {background: url("/images/tl.png");}
-        #topright{background: url("/images/tr.png");}
-        #bottomright{background: url("/images/br.png");}
-        #bottomleft{background: url("/images/bl.png");}
-        #top{background: url("/images/t.png");}
-        #bottom{background: url("/images/b.png");}
-        #right{background: url("/images/r.png");}
-        #left{background: url("/images/l.png");}
-        #middle{outline: none; vertical-align: top;}
-        .arrow{ color:#000; font-size: 10px; text-align: center; outline: 1px solid #ccc; display: inline-block; width: 15px; height: 15px; opacity: 0.2; margin: 0; padding: 0;}
+        /* - show direction pannel - */
+#direction { position: absolute; top:0; left: 200px; width: 55px; height: 45px;  z-index: 90; }
+#topleft { background: url("/images/tl.png"); }
+#topright { background: url("/images/tr.png"); }
+#bottomright { background: url("/images/br.png"); }
+#bottomleft { background: url("/images/bl.png"); }
+#top { background: url("/images/t.png"); }
+#bottom { background: url("/images/b.png"); }
+#right { background: url("/images/r.png"); }
+#left { background: url("/images/l.png"); }
+#middle { outline: none; vertical-align: top; }
+.arrow { color:#000; font-size: 10px; text-align: center; outline: 1px solid #ccc; display: inline-block; width: 15px; height: 15px; opacity: 0.2; margin: 0; padding: 0; }
 
-        /* touch pannel */
-        .touch_pannel{position: absolute; bottom: 0; width: 100%; height: 200px; z-index: 100; display: none;}
-        #look_around{position: absolute; left: 10px; bottom: 90px; width: 150px; height: 40px; border: 2px solid #fff; font-size: 20px; padding: 0; background: url('/images/look_arrow.png'); background-repeat: no-repeat; background-position: center center;  opacity: 0.5; border-radius: 16px; }
-        #shoot_btn{position: absolute; right: 55px; bottom: 160px; width: 40px; height: 40px; background: orange; border-radius: 22px; border: 2px solid #fff; box-shadow: 1px 0px 1px 1px #aaa; padding: 0; font-size: 30px;text-align:  center; color: #fff;}
-        #move_around{position: absolute; right: 0; bottom: 0; width: 150px; height: 150px; background: url('/images/move_arrow.png');  opacity: 0.5; border: 1px solid #fff; }
+        /* - touch pannel - */
+.touch_pannel{position: absolute; bottom: 0; width: 100%; height: 200px; z-index: 100; display: none;}
+#look_around{position: absolute; left: 10px; bottom: 90px; width: 150px; height: 40px; border: 2px solid #fff; font-size: 20px; padding: 0; background: url('/images/look_arrow.png'); background-repeat: no-repeat; background-position: center center;  opacity: 0.5; border-radius: 16px; }
+#shoot_btn{position: absolute; right: 55px; bottom: 160px; width: 40px; height: 40px; background: orange; border-radius: 22px; border: 2px solid #fff; box-shadow: 1px 0px 1px 1px #aaa; padding: 0; font-size: 30px;text-align:  center; color: #fff;}
+#move_around{position: absolute; right: 0; bottom: 0; width: 150px; height: 150px; background: url('/images/move_arrow.png');  opacity: 0.5; border: 1px solid #fff; }
 
-        /*responsive design */
-        @media screen and  (min-width: 450px) and (max-width: 700px) {
-          html {font-size: 11px;}
-          .info_page h1, .info_page h2, .info_page h3  {  margin: 12px auto 0 auto;}
-          .info_page h4, #choose_map h4, #game_info h4{/*font-size: 0.7rem;*/ margin: 8px auto 0 auto;}
-          button{/*font-size: 0.8rem;*/ padding: 3px 5px; color: #fff; border-radius: 10px;}
-          #game_start, #resume, .startover, #close_keyset{margin: 8px auto; }
-          .map_btn{width: 60px; height: 60px; margin: 0 10px;}
-          #mini_map{width: 100px; height: 100px;}
-          #direction{left: 100px; }
-          #scoreboard table{padding: 3px;}
-          #scoretable th{ padding: 0 3px;}
-          .status_cl{display: none;}
-          #result_text{margin: 12px auto 0 auto; }
-          .top_scores{margin: 8px auto; padding: 2px;}
-          #choose_game_id{ top: 90px; left: 10px; }
-          #choose_game_id h4{margin: 10px auto 0 auto;}
-          #close_game_id{ display: block;}
-        }
+        /* - responsive design - */
+@media screen and  (min-width: 450px) and (max-width: 700px) {
+  html {font-size: 11px;}
+  .info_page h1, .info_page h2, .info_page h3  {  margin: 12px auto 0 auto;}
+  .info_page h4, #choose_map h4, #game_info h4{/*font-size: 0.7rem;*/ margin: 8px auto 0 auto;}
+  button{/*font-size: 0.8rem;*/ padding: 3px 5px; color: #fff; border-radius: 10px;}
+  #game_start, #resume, .startover, #close_keyset{margin: 8px auto; }
+  .map_btn{width: 60px; height: 60px; margin: 0 10px;}
+  #mini_map{width: 100px; height: 100px;}
+  #direction{left: 100px; }
+  #scoreboard table{padding: 3px;}
+  #scoretable th{ padding: 0 3px;}
+  .status_cl{display: none;}
+  #result_text{margin: 12px auto 0 auto; }
+  .top_scores{margin: 8px auto; padding: 2px;}
+  #choose_game_id{ top: 90px; left: 10px; }
+  #choose_game_id h4{margin: 10px auto 0 auto;}
+  #close_game_id{ display: block;}
+}
 
-        @media screen and  (max-width: 449px)  {
-          html {font-size: 11px;}
-          .info_page h1, .info_page h2, .info_page h3  {  margin: 12px auto 0 auto;}
-          .info_page h4, #choose_map h4, #game_info h4{/*font-size: 0.7rem;*/ margin: 8px auto 0 auto;}
-          button{ padding: 3px 8px; color: #fff; border-radius: 10px;}
-          #choose_game_type button{ margin: 12px auto; display: block;}
-          #game_start, #resume, .startover, #close_keyset{margin: 8px auto; }
-          .map_btn{width: 60px; height: 60px; margin: 5px 10px;}
-          #mini_map{width: 100px; height: 100px;}
-          #direction{left: 100px; }
-          #scoreboard table{padding: 3px;}
-          #scoretable th{ padding: 0 3px;}
-          .status_cl{display: none;}
-          #result_text{margin: 12px auto 0 auto; }
-          .top_scores{margin: 8px auto; padding: 2px;}
-          #choose_game_id{ top: 90px; left: 10px; }
-          #choose_game_id h4{margin: 10px auto 0 auto;}
-          #close_game_id{display: block;}
-        }
+@media screen and  (max-width: 449px)  {
+  html {font-size: 11px;}
+  .info_page h1, .info_page h2, .info_page h3  {  margin: 12px auto 0 auto;}
+  .info_page h4, #choose_map h4, #game_info h4{/*font-size: 0.7rem;*/ margin: 8px auto 0 auto;}
+  button{ padding: 3px 8px; color: #fff; border-radius: 10px;}
+  #choose_game_type button{ margin: 12px auto; display: block;}
+  #game_start, #resume, .startover, #close_keyset{margin: 8px auto; }
+  .map_btn{width: 60px; height: 60px; margin: 5px 10px;}
+  #mini_map{width: 100px; height: 100px;}
+  #direction{left: 100px; }
+  #scoreboard table{padding: 3px;}
+  #scoretable th{ padding: 0 3px;}
+  .status_cl{display: none;}
+  #result_text{margin: 12px auto 0 auto; }
+  .top_scores{margin: 8px auto; padding: 2px;}
+  #choose_game_id{ top: 90px; left: 10px; }
+  #choose_game_id h4{margin: 10px auto 0 auto;}
+  #close_game_id{display: block;}
+}
     </style>
   </head>
 
