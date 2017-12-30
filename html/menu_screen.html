@@ -15,11 +15,15 @@ header { }
 
 .site_name { font-family: 'Cutive Mono', monospace; }
 
-main { font-family: 'Cutive Mono', monospace; outline: 1px dashed #aaa; width: 350px; margin: 0 auto; padding: 15px; }
+main {  font-family: 'Cutive Mono', monospace;  width: 350px; margin: 0 auto; margin-top: 45px; }
+.game_title { text-align: center; }
 
-main div { margin-bottom: 8px; }
-main div a { font-size: 12px; }
+.page_data { outline: 1px dashed #aaa; padding: 15px; margin-top: 15px; }
 
+.page_data div { margin-bottom: 8px; }
+.page_data div a { font-size: 12px; }
+
+.page_foot { text-align: center; color: #888; margin-top: 10px; }
 
 </style>
 
@@ -29,17 +33,20 @@ main div a { font-size: 12px; }
 <div class="site_name">* play.oahu.tech</div></header>
 
 
-<main>
-  <div>Main Menu &nbsp; <a href="../../menu">Open</a></div>
-  <div>Channel FPS &nbsp; <a href="../../channel_fps">Play</a></div>
-  <div>Player Options &nbsp; <a href="../../player">Open</a></div>
-  <div>Game Settings &nbsp; <a href="../../settings">Open</a></div>
-  <div>Sounds &nbsp; <a href="../../sounds">Open</a></div>
-  <div>Graphics &nbsp; <a href="../../graphics">Open</a></div>
-  <div>Intro &nbsp; <a href="../../intro">Open</a></div>
-  <div>Splash &nbsp; <a href="../../splash">Open</a></div>
-  <div>About &nbsp; <a href="../../about">Open</a></div>
-  <div>How To &nbsp; <a href="../../howto">Open</a></div>
+<main class="page_wrap">
+  <div class="game_title">Channel FPS &nbsp; <a href="../../channel_fps">Play</a></div>
+  <div class="page_data">
+    <div>Main Menu &nbsp; <a href="../../menu">Open</a></div>
+    <div>Player Options &nbsp; <a href="../../player">Open</a></div>
+    <div>Game Settings &nbsp; <a href="../../settings">Open</a></div>
+    <div>Sounds &nbsp; <a href="../../sounds">Open</a></div>
+    <div>Graphics &nbsp; <a href="../../graphics">Open</a></div>
+    <div>Intro &nbsp; <a href="../../intro">Open</a></div>
+    <div>Splash &nbsp; <a href="../../splash">Open</a></div>
+    <div>About &nbsp; <a href="../../about">Open</a></div>
+    <div>How To &nbsp; <a href="../../howto">Open</a></div>
+  </div><!-- . page_data - -->
+  <div class="page_foot">play.oahu.tech</div>
 </main>
 
 
