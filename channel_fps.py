@@ -700,7 +700,7 @@ class MainPage(webapp2.RequestHandler):
 
     if game:
       token = channel.create_channel(current_user + game_key)
-      template_values = {
+      page_objects = {
                          'login_key': login_key,
                          'gate': gate,
                          'user_name': user_name,
@@ -711,7 +711,7 @@ class MainPage(webapp2.RequestHandler):
                          'initial_message': GameUpdater(game).get_game_message(),
                         }
       path = os.path.join(os.path.dirname(__file__),  'html/%s' %html_file)
-      self.response.out.write(template.render(path, template_values))
+      self.response.out.write(template.render(path, page_objects))
     else:
       self.redirect('/')
 
