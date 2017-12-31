@@ -15,7 +15,12 @@ header { }
 
 .site_name { font-family: 'Cutive Mono', monospace; }
 
-main {  font-family: 'Cutive Mono', monospace;  width: 350px; margin: 0 auto; margin-top: 45px; }
+.all_wrap { margin: 0 auto; margin-top: 45px; width: 512px; }
+.game_list { display: inline-block; vertical-align: top; text-align: right; margin-top: 75px; margin-right: 10px; }
+.game_list div { margin-bottom: 7px; letter-spacing: 0.03em; padding-right: 15px; border-right: 3px solid #5A5475; cursor: pointer; color: #F8F8F2; }
+.game_list div:hover { border-right: 3px solid #C5A3FF; color: #96CBFE; }
+
+main {  font-family: 'Cutive Mono', monospace;  width: 350px; display: inline-block; }
 .game_title { text-align: center; font-size: 24px; }
 
 .page_data { box-shadow: 5px 3px 6px #FFB8D1; padding: 15px; margin-top: 15px; background-color: #5A5475; border: 13px solid #C2FFDF; }
@@ -32,7 +37,17 @@ main {  font-family: 'Cutive Mono', monospace;  width: 350px; margin: 0 auto; ma
 <header><span class="page_name">Menu Screen</span>
 <div class="site_name">* play.oahu.tech</div></header>
 
-
+<div class="all_wrap">
+  <div class="game_list">
+    <div>Turok</div>
+    <div>Perfect Dark</div>
+    <div>Power Pete</div>
+    <div>Grumpy Duck</div>
+    <div>Escape Velocity</div>
+    <div>Crystal Quest</div>
+    <div>The Manhole</div>
+    <div>Channel FPS</div>
+  </div>
 <main class="page_wrap">
   <div class="game_title">Channel FPS &nbsp; <a href="../../channel_fps">Play</a></div>
   <div class="page_data">
@@ -51,7 +66,7 @@ main {  font-family: 'Cutive Mono', monospace;  width: 350px; margin: 0 auto; ma
   </div><!-- . page_data - -->
   <div class="page_foot">play.oahu.tech</div>
 </main>
-
+</div>
 
 </body>
 </html>
