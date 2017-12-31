@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="chanel_fps" ng-controller="page">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>First Person Shooter Game</title>
+    <title>Channel FPS Game</title>
     <style>
 body { margin: 0; padding: 0; font-family: 'Helvetica Neue', sans-serif; cursor: crosshair; overflow: hidden; }
         /* - scoreboard - */
-#scoreboard { position: fixed; top: 0; right: 0; /*width: 350px;*/ text-align: center; font-family: serif; font-size: 1rem; display: none; background: #aaa; border-radius: 5px; padding: 0 0.3rem; }
+#scoreboard { z-index: 1000; position: fixed; top: 0; right: 0; /*width: 350px;*/ text-align: center; font-family: serif; font-size: 1rem; display: none; background: #5A5475; border-radius: 5px; padding: 0 0.3rem; }
 #scoreboard table { border-bottom: 1px solid #fff; }
 #scoreboard p { margin: 8px auto; }
-#scoretable th { color: #1E88E5; padding: 0 6px; }
+#scoretable th { color: #96CBFE; padding: 0 6px; }
 .color_cl { width: 10px; }
 #color1 { background: yellow; }
 #color2 { background: orange; }
+#play_time { color: #E9C062; }
+#play_time span { color: #A8FF60; }
 
         /* - general css for .info_page - */
 .info_page { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: grey; opacity: 0.85; text-align: center; color: #fff; z-index: 100; display: none; }
 .info_page h1 { margin-top: 60px; font-family: cursive; font-weight: bolder; font-size: 3rem; }
-.info_page h2 { margin: 35px auto 15px auto; font-family: cursive; font-weight: bolder; font-size: 2rem; text-shadow: cyan 0 -1px 3px; }
-.info_page h3 { margin-top: 25px; font-family: cursive; font-weight: bolder; font-size: 1.5rem; color: #d04c4c;}
-.info_page h4 { margin: 15px; }
+.info_page h2 { margin: 35px auto 15px auto; font-family: cursive; font-weight: bolder; font-size: 2.3rem; text-shadow: #3B3A32 0 -1px 3px; }
+.info_page h3 { margin-top: 25px; font-family: cursive; font-weight: bolder; font-size: 1.5rem; color: #d04c4c; }
+.info_page h4 { margin: 15px; text-shadow: #3B3A32 0 -1px 3px; }
 .cyan { color: cyan; }
 
         /* - instruction page - */
-button { font-size: 1rem; padding: 5px 15px; color: #fff; border-radius: 16px;  border: none; margin: 0 auto; cursor: pointer; outline: none; background: #009688; font-family: 'Helvetica Neue',sans-serif; text-shadow:#C17C3A 0 -1px 0; }
+button { font-size: 1rem; padding: 5px 15px; color: #fff; border-radius: 16px;  border: none; margin: 0 auto; cursor: pointer; outline: none; background: #5A5475; font-family: 'Helvetica Neue', sans-serif; text-shadow:#FFB8D1 0 -1px 0; }
 button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
-#game_info, #game_link { color: cyan; }
-#mini_map{position: fixed; top: 0; left: 0; width: 200px; height: 200px; background: #73c3aa; z-index: 90; }
+#game_info, #game_link { color: #3E3D32; }
+#mini_map { position: fixed; top: 0; left: 0; width: 200px; height: 200px; background: #73c3aa; z-index: 90; }
 #instruction, #game_start { display: block; }
 #instruction p { margin: 5px auto; }
 .waiting, .not_waiting { display: none; }
@@ -37,8 +39,8 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
 #heal { background: green; opacity: 0.35; }
 #hurt { background: red; opacity: 0.35; }
 .how_to_play { margin: 15px auto; text-align: left; width: 25rem; }
-#game_start, #resume { margin: 12px auto; background: orange; border: 1px solid #fff; }
-.startover{border: 1px solid #fff;  background: #00BCD4; margin: 20px 20px; }
+#game_start, #resume { margin: 12px auto; background: #AE81FF; border: 1px solid #E6C000; }
+.startover { border: 1px solid #C2FFDF;  background: #AE81FF; margin: 20px 20px; }
 #result_text { color: #fff; margin: 3.5rem auto 25px auto; text-shadow: cyan 0 -1px 6px; }
 .top_scores { margin: 15px auto; border-radius: 10px; background: steelblue; padding: 15px; font-family: 'Helvetica Neue', sans-serif; text-shadow: #C17C3A 0 -1px 0; font-size: 1rem; }
 .top_scores td { padding: 5px 10px; }
@@ -76,7 +78,7 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
 .player_btn { margin: 0 8px; }
 
         /* - choose game id - */
-#choose_game_id { position:  absolute; top: 200px; left: 50px; background: #009688; border-radius:  10px; display: none; text-shadow:#C17C3A 0 -1px 0; box-shadow: 2px 2px 8px #aaa; padding: 0 5px; border: 1px solid #fff;}
+#choose_game_id { position:  absolute; top: 200px; left: 50px; background: #009688; border-radius:  10px; display: none; text-shadow: #FFB8D1 0 -1px 0; box-shadow: 2px 2px 8px #aaa; padding: 0 5px; border: 1px solid #fff;}
 .change_game_id { display: block; border: none; background: none; }
 #close_game_id { position: absolute; top:-8px; right: -8px; border-radius: 10px; border: 2px solid #fff; background: cyan; display: none; }
 .animated2 { 
@@ -118,7 +120,7 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
 .control { position: absolute; bottom: 0; left: 10px; z-index: 110; height: 35px; }
 .control_btn { width: 35px; height: 35px; border: none; margin: auto; vertical-align: top; }
 #question { background: url("/images/question.png"); background-size: cover;background-repeat: no-repeat; }
-#home { background: url("/images/home.png"); background-size: cover;background-repeat: no-repeat;  }
+#home { background: url("/images/home.png"); background-size: cover;background-repeat: no-repeat; }
 #setting { background: url("/images/setting.png"); background-size: cover;background-repeat: no-repeat; }
 #key_error { color:red; display: none;}
 #close_keyset { border: 1px solid #fff; background: orange; }
@@ -127,7 +129,7 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
         /* - choose map btn - */
 #choose_map { margin: 20px auto; }
 .map_btn { width: 100px; height: 100px; display: inline-block; margin: 15px; border: 1px solid #fff; border-radius: 5px; }
-#map1 { background: url("/images/map1.png");  box-shadow: 2px 2px 8px yellow; }
+#map1 { background: url("/images/map1.png");  box-shadow: 2px 2px 8px #E6C000; }
 #map2 { background: url("/images/map2.png"); }
 #map3 { background: url("/images/map3.png"); }
 #map1, #map2, #map3 { background-size: cover; }
@@ -228,8 +230,8 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
     </div><!-- #scoreboard -->
 
     <div class="info_page" id="instruction">
-      <h2> First Person Shooter Game </h2>
-      <h4 id="game_info">Current Game ID:{{ game_link }}</h4>
+      <h2> Channel FPS Game </h2>
+      <h4 id="game_info">Current Game ID: &nbsp; {{ game_link }}</h4>
       <hr>
 
       <div id="choose_game_type">
@@ -266,7 +268,7 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
       <h4 class="waiting">Waiting for another player ...</h4>
       <h4 class="not_waiting cyan">Another player joins in ...</h4>
       <button id="game_start" class="animated pulse"> START </button>
-      <p>Log in to save your score: {{ user_name }} <a href="{{ login_key }}">{{ gate }}</a></p>
+      <p>Log in to save your score: {{ user_name }} &nbsp; <a href="{{ login_key }}">{{ gate }}</a></p>
     </div><!-- #instruction -->
 
     <div class="info_page" id="ready">
@@ -360,16 +362,16 @@ button:hover { transform: scale(1.15); -webkit-transform: scale(1.15); }
     <div class="info_page" id="heal"></div>
 
     <!-- audio -->
-    <audio id="player_sound" src="/audio/player_sound.m4a" ></audio>
-    <audio id="blast" src="/audio/explosion.m4a" ></audio>
-    <audio id="ai_sound" src="/audio/ai_sound.m4a" ></audio>
-    <audio id="birds" src="/audio/birds008.mp3" ></audio>
+    <audio id="player_sound" src="../../audio/player_sound.m4a" ></audio>
+    <audio id="blast" src="../../audio/explosion.m4a" ></audio>
+    <audio id="ai_sound" src="../../audio/ai_sound.m4a" ></audio>
+    <audio id="birds" src="../../audio/birds008.mp3" ></audio>
 
     <!-- script -->
-    <script src='/_ah/channel/jsapi'></script>
+    <script src='../../_ah/channel/jsapi'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script> 
-    <script src="/files/Flag.js"></script>
+<!--    <script src="../../files/Flag.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <!-- <script src='/js/SubdivisionModifier.js'></script> -->
 
@@ -1189,7 +1191,7 @@ function checkTime(){
 }
 
 function display_cf_Time(){
-  $('#play_time').text( 'Time: ' + (Date.now()-startTime)/1000 + ' s');
+  $('#play_time').html( '<span>Time:</span> &nbsp; ' + (Date.now()-startTime)/1000 + ' s');
 }
 
 function display_s3_Time(){
@@ -1992,7 +1994,7 @@ function getMovingData(){
 function initialize() {
   openChannel();
   onMessage({data: '{{ initial_message }}'});
-}    
+}
 
 function sendMessage(path, opt_param) {
   path += '?g=' + state.game_key;
